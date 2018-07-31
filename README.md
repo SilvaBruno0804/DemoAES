@@ -15,4 +15,7 @@ O algoritmo suporta chaves de 128/192 e 256 bits.
 
 Mais detalhes nos comentários do código
 
+Futuramente implementar leitura de arquivos (pdf, doc, multimídia) e medição de tempo de execução para comparação com tamanhos de pacotes
+diferentes.
+
 Contato: silvabruno@edu.univali.br
