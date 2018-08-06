@@ -121,7 +121,7 @@ static uint8_t getSBoxInvert(uint8_t num)
 // This function produces Nb(Nr+1) round keys. The round keys are used in each round to decrypt the states.
 static void KeyExpansion(uint8_t* RoundKey, const uint8_t* Key)
 {
-  unsigned i, j, k;
+  unsigned short int i, j, k;
   uint8_t tempa[4]; // Used for the column/row operations
 
   // The first round key is the key itself.
@@ -302,7 +302,7 @@ static uint8_t Multiply(uint8_t x, uint8_t y)
 // Please use the references to gain more information.
 static void InvMixColumns(state_t* state)
 {
-  int i;
+  uint8_t i;
   uint8_t a, b, c, d;
   for (i = 0; i < 4; ++i)
   {
@@ -417,21 +417,22 @@ static void InvCipher(state_t* state,uint8_t* RoundKey)
 /*****************************************************************************/
 /* Public functions:                                                         */
 /*****************************************************************************/
-void AES_ECB_encrypt(struct AES_ctx *ctx,const uint8_t* buf, int text_size)
+void AES_ECB_encrypt(struct AES_ctx *ctx,const uint8_t* buf, unsigned int text_size)
 {
   // The next function call encrypts the PlainText with the Key using AES algorithm.
   const uint8_t* temp = buf;
   for (int i = 0; i < text_size; i=i+16, temp=temp+16) {
-     Cipher((state_t*)temp, ctx->RoundKey);
+        //printf("\n\nValor de i -> %d\n\n", i);
+        Cipher((state_t*)temp, ctx->RoundKey);
   }
 }
 
-void AES_ECB_decrypt(struct AES_ctx* ctx,const uint8_t* buf, int text_size)
+void AES_ECB_decrypt(struct AES_ctx* ctx,const uint8_t* buf, unsigned int text_size)
 {
   // The next function call decrypts the PlainText with the Key using AES algorithm.
   const uint8_t* temp = buf;
   for (int i = 0; i < text_size; i=i+16, temp=temp+16) {
-    InvCipher((state_t*)temp, ctx->RoundKey);
+        InvCipher((state_t*)temp, ctx->RoundKey);
   }
 }
 

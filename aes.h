@@ -44,7 +44,7 @@ struct AES_ctx
 
 void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);
 
-void AES_ECB_encrypt(struct AES_ctx* ctx, const uint8_t* buf, int text_size);
-void AES_ECB_decrypt(struct AES_ctx* ctx, const uint8_t* buf, int text_size);
+void AES_ECB_encrypt(struct AES_ctx* ctx, const uint8_t* buf, unsigned int text_size);
+void AES_ECB_decrypt(struct AES_ctx* ctx, const uint8_t* buf, unsigned int text_size);
 
 #endif
